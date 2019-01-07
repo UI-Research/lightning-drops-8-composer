@@ -1,14 +1,18 @@
 {
-    "name": "pantheon-systems/example-drops-8-composer",
-    "description": "Install drops-8 with Composer on Pantheon.",
+    "name": "UI-Research/lightning-drops-8-composer",
+    "description": "Install lightning with Composer on Pantheon.",
     "type": "project",
-    "license": "MIT",
-    "repositories": [
-        {
+    "license": "GPL-2.0+",
+    "repositories": {
+        "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        "assets": {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
-    ],
+    },
     "require": {
         "php": ">=7.0.8",
         "composer/installers": "^1.0.20",
@@ -17,8 +21,7 @@
         "drupal/config_direct_save": "^1.0",
         "drupal/config_installer": "^1.0",
         "drupal/console": "^1",
-        "drupal/core": "^8",
-        "drupal/simple_block": "^1.0@beta",
+        "acquia/lightning": "~3.2.0",
         "drush/drush": "~8",
         "rvtraveller/qs-composer-installer": "^1.1",
         "drush-ops/behat-drush-endpoint": "^0.0.5",
@@ -77,13 +80,14 @@
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/contrib/{$name}": ["type:drupal-drush"]
+            "drush/contrib/{$name}": ["type:drupal-drush"],
+            "build/web/private/scripts/quicksilver": ["type:quicksilver-script"],
+            "build/web/libraries/{$name}": ["type:bower-asset", "type:npm-asset", "type:drupal-library"]
         },
         "build-env": {
             "install-cms": [
-                "drush site-install standard --account-mail={account-mail} --account-name={account-name} --account-pass={account-pass} --site-mail={site-mail} --site-name={site-name} --yes",
-                "drush pm-enable config_direct_save simple_block --yes",
-                "drush pm-uninstall block_content --yes"
+                "drush site-install lightning --account-mail={account-mail} --account-name={account-name} --account-pass={account-pass} --site-mail={site-mail} --site-name={site-name} --yes",
+                "drush pm-enable config_direct_save --yes"
             ],
             "export-configuration": "drush config-export --yes"
         },
@@ -101,6 +105,14 @@
                 ".htaccess",
                 "web.config"
             ]
+        },
+        "enable-patching": true,
+        "patches": {
+            "drupal/core": {
+                "2699157 - Plugin Lazy loading can cause usort warning": "https://www.drupal.org/files/issues/2699157-23.drupal.Plugin-Lazy-loading-can-cause-usort-warning.patch",
+                "2759397 - Patch EntityReferenceItemNormalizer to prevent recursion": "https://www.drupal.org/files/issues/2759397-1-entity_reference_recursion.patch",
+                "2679775 - Fixes float issue with inline label fields (entity references on most cases).": "https://www.drupal.org/files/issues/2679775-11-inline-labels.patch"
+            }
         }
     },
     "config": {
