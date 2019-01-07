@@ -1,5 +1,5 @@
 {
-    "name": "UI-Research/lightning-drops-8-composer",
+    "name": "ui-research/lightning-drops-8-composer",
     "description": "Install lightning with Composer on Pantheon.",
     "type": "project",
     "license": "GPL-2.0+",
