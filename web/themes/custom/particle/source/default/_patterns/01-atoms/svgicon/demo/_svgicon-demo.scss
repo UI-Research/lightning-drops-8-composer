@@ -1,0 +1,20 @@
+// The non-printing variables, functions, and mixins of 00-protons/variables
+// are provided to this file via:
+//   webpack.particle.js: sass-loader.data|includePaths
+
+.svgicon-demo--particle-mixin {
+  @include sprite('person');
+  height: rem-calc(40px);
+  width: rem-calc(40px);
+}
+
+.svgicon-demo-1 {
+  @include sprite(
+    'person',
+    (
+      color: theme-color('primary'),
+    )
+  );
+  width: rem-calc(40px);
+  height: rem-calc(40px);
+}

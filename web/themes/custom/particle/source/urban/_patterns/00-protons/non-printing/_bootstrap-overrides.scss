@@ -1,0 +1,39 @@
+// Bootstrap variable customization
+// See all variables available at: ~bootstrap/scss/_variables.scss
+
+// Global
+$enable-rounded: false;
+
+// Colors
+$theme-colors: (
+  'primary': $urban-main-cyan,
+  'secondary': $urban-main-black,
+  'info': $urban-main-gray,
+  'warning': $urban-secondary-yellow,
+  'danger': $urban-tertiary-red,
+  'success': $urban-tertiary-green,
+  'light': #f5f5f5,
+  'dark': $urban-tertiary-spacegray,
+);
+
+// Fonts
+$font-family-base: 'LatoRegular', sans-serif;
+$headings-font-family: 'LatoRegular', sans-serif;
+
+// Buttons
+$btn-border-radius: 0.25rem;
+
+// Cards
+$card-border-width: rem-calc(1px);
+
+// Spacing
+$spacers: (
+  6: (1rem * 3.5),
+  7: (1rem * 4),
+);
+
+// Bootstrap non-printing tools. DO NOT REMOVE, because Sass overrides must be
+// defined BEFORE the !default values are.
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';

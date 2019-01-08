@@ -1,7 +1,7 @@
 # https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
 defaults: &defaults
   docker:
-    - image: quay.io/pantheon-public/build-tools-ci:1.x
+    - image: quay.io/pantheon-public/build-tools-ci:nodejs
   working_directory: ~/example_drops_8_composer
   environment:
     #=========================================================================
@@ -20,6 +20,9 @@ defaults: &defaults
     # ADMIN_EMAIL:    The email address to give the admin when installing.
     #=========================================================================
     TZ: "/usr/share/zoneinfo/America/New_York"
+
+    # Uncomment if not on a MultiDev account.
+    # TERMINUS_ENV: dev
 
     # The variables below usually do not need to be modified.
 

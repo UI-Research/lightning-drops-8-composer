@@ -1,0 +1,40 @@
+// Custom non-printing type variables and mixins
+
+// Install Lato fonts
+$font-faces: (
+  (
+    'name': 'LatoRegular',
+    'filename': 'Lato-Regular',
+  ),
+  (
+    'name': 'LatoRegularItalic',
+    'filename': 'Lato-Regular-italic',
+  ),
+  (
+    'name': 'LatoLight',
+    'filename': 'Lato-Light',
+  ),
+  (
+    'name': 'LatoLightItalic',
+    'filename': 'Lato-300italic',
+  ),
+  (
+    'name': 'LatoBold',
+    'filename': 'Lato-Bold',
+  ),
+  (
+    'name': 'LatoBoldItalic',
+    'filename': 'Lato-700italic',
+  ),
+  (
+    'name': 'LatoBlack',
+    'filename': 'Lato-Black',
+  )
+) !default;
+
+// Child themes can add to Fonts with `$extra-font-faces`
+@if variable-exists(extra-font-faces) {
+  $font-faces: join($font-faces, $extra-font-faces);
+}
+
+$font-directory: '../fonts/' !default;

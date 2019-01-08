@@ -1,0 +1,14 @@
+uuid: 76f869ed-994f-4a34-baf7-91a2d71762c2
+name: urban-org
+mail: msutton@urban.org
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI

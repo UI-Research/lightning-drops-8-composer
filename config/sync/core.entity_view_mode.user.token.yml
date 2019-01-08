@@ -1,0 +1,14 @@
+uuid: ed42fd04-60a2-466c-907a-eb7420a649cd
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - user
+third_party_settings:
+  lightning_core:
+    internal: true
+id: user.token
+label: Token
+targetEntityType: user
+cache: true
