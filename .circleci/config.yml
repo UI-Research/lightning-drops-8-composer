@@ -19,7 +19,7 @@ defaults: &defaults
     # ADMIN_PASSWORD: The admin password to use when installing.
     # ADMIN_EMAIL:    The email address to give the admin when installing.
     #=========================================================================
-    TZ: "/usr/share/zoneinfo/America/Los_Angeles"
+    TZ: "/usr/share/zoneinfo/America/New_York"
 
     # The variables below usually do not need to be modified.
 
@@ -102,6 +102,10 @@ jobs:
                 command: ./.circleci/scripts/pantheon/01-prepare
 
             - run:
+                name: install and build particle theme
+                command: ./.circleci/scripts/particle/01-particle
+
+            - run:
                 name: build assets
                 command: composer -n build-assets
 
@@ -114,9 +118,9 @@ jobs:
                 name: run composer install again to get dev dependencies
                 command: composer install
 
-            - run:
-                name: run functional tests with Behat
-                command: ./tests/scripts/run-behat
+#            - run:
+#                name: run functional tests with Behat
+#                command: ./tests/scripts/run-behat
 
             - run:
                 name: post-test actions
@@ -132,9 +136,16 @@ jobs:
 
 workflows:
   version: 2
-  build_and_test:
+  build_and_test2:
     jobs:
       # Install dev dependencies and do simple tests (sniff, unit tests, etc.)
       - build
+      # Install and build theme.
+      #      - build_theme:
+      #          requires:
+      #              - build
       # Build deploy and test on target platform
-      - build_deploy_and_test
+      - build_deploy_and_test:
+          filters:
+            branches:
+              only: master

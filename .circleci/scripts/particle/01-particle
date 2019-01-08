@@ -1,0 +1,29 @@
+#!/bin/bash
+
+
+# stop execution if anything fails
+set -o errexit # -e
+trap "{ echo -e \"\nError: Something went wrong in $SCRIPT_NAME.\">&2; exit 1; }" ERR
+
+#set -eo pipefail
+##
+##set -e
+
+#
+# This script installs and builds particle and pattern lab.
+#
+# - Environment settings (e.g. git config) are initialized
+# - Terminus plugins are installed
+# - Any needed code updates are done
+#
+
+sudo npm install -g gulp-cli && \
+cd $HOME/example_drops_8_composer/web/themes/custom/particle && \
+npm install --unsafe-perm && \
+npm run setup && \
+npm run build:drupal && \
+npm run build:pl
+
+echo "Theme was installed!"
+
+
