@@ -32,6 +32,7 @@
         "drupal/libraries": "^3.0@alpha",
         "drupal/console": "^1",
         "drupal/key": "^1.8",
+        "drupal/encrypt": "^3.0",
         "drupal/role_delegation": "^1.0@alpha",
         "drupal/editor_advanced_link": "1.x-dev",
         "drupal/linkit": "^5.0",
