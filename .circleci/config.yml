@@ -22,7 +22,7 @@ defaults: &defaults
     TZ: "/usr/share/zoneinfo/America/New_York"
 
     # Uncomment if not on a MultiDev account.
-    # TERMINUS_ENV: dev
+    TERMINUS_ENV: dev
 
     # The variables below usually do not need to be modified.
 

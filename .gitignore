@@ -40,6 +40,12 @@ web/web.config
 # repository as a custom upstream. The .gitignore file
 # is not modified in the GitHub PR workflow.
 
+# Particle compiled files
+web/themes/custom/particle/dist
+web/themes/custom/particle/source/*/_data/env.json
+web/themes/custom/particle/source/*/_patterns/01-atoms/icon/font/iconfont.*
+web/themes/custom/particle/source/*/_patterns/01-atoms/svgicon/scss/_icons-generated.scss
+web/themes/custom/particle/source/*/styleguide/css
 
 # :::::::::::::::::::::: cut ::::::::::::::::::::::
 
