@@ -128,9 +128,7 @@
         },
         "build-env": {
             "install-cms": [
-                "drush site-install lightning --account-mail={account-mail} --account-name={account-name} --account-pass={account-pass} --site-mail={site-mail} --site-name={site-name} --yes",
-                "drush config-import --yes",
-                "drush pm-enable config_direct_save --yes"
+                "drush site-install config_installer --account-mail={account-mail} --account-name={account-name} --account-pass={account-pass} --site-mail={site-mail} --site-name={site-name} --yes",
             ],
             "export-configuration": "drush config-export --yes"
         },
