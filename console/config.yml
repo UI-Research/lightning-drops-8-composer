@@ -1,3 +1,6 @@
 application:
-    options:
-        root: web
+  options:
+    root: web
+  overrides:
+    config:
+      skip-validate-site-uuid: true

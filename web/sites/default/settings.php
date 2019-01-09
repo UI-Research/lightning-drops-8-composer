@@ -81,7 +81,7 @@ if (defined('PANTHEON_ENVIRONMENT')) {
   }
 
   // Config Split dev modules enabled by default.
-  // $config['config_split.config_split.dev']['status'] = TRUE;
+  $config['config_split.config_split.dev']['status'] = TRUE;
 
   if (PANTHEON_ENVIRONMENT != 'live') {
     // Place for settings for the non-live environment
@@ -120,7 +120,7 @@ if (defined('PANTHEON_ENVIRONMENT')) {
     $config['system.logging']['error_level'] = 'none';
 
     // Config Split disable dev modules.
-    // $config['config_split.config_split.dev']['status'] = FALSE;
+    $config['config_split.config_split.dev']['status'] = FALSE;
   }
 
   if (PANTHEON_ENVIRONMENT == 'live') {
@@ -139,7 +139,7 @@ if (defined('PANTHEON_ENVIRONMENT')) {
     $config['system.logging']['error_level'] = 'none';
 
     // Config Split disable dev modules.
-    // $config['config_split.config_split.dev']['status'] = FALSE;
+    $config['config_split.config_split.dev']['status'] = FALSE;
 
     // Redirect to canonical domain
     if (isset($variables)) {

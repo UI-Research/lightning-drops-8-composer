@@ -18,6 +18,8 @@ workflows:
         description: Push changes back to GitHub if needed
         script: private/scripts/quicksilver/quicksilver-pushback/push-back-to-github.php
 
+# Enable these after install.
+
 #      - type: webphp
 #        description: Import configuration from .yml files
 #        script: private/scripts/sync_code/drush_config_import.php

@@ -1,0 +1,40 @@
+name: your-site-name
+recipe: pantheon
+config:
+  framework: drupal8
+  site: your-site-name
+  id: insert-here-after-build-tools
+
+services:
+  appserver:
+    config:
+      drush: global:8.1.17
+    overrides:
+      services:
+        image: urbaninstitute/lando-build:v8
+#    run:
+#      - "cd $LANDO_MOUNT && composer update"
+
+tooling:
+  npm:
+    service: appserver
+  node:
+    service: appserver
+  gulp:
+    service: appserver
+  tika:
+    service: appserver
+    cmd: java -jar /srv/bin/tika-app-1.1.jar
+  drupal:
+    cmd:
+      - "/app/vendor/bin/drupal"
+      # - "--root=/app/web"
+
+# Enable events after install.
+
+#events:
+#  post-pull:
+#    - appserver: cd $LANDO_WEBROOT && drush updatedb -y
+#    - appserver: cd $LANDO_WEBROOT && drush entup -y
+#    - appserver: cd $LANDO_WEBROOT && drush cim -y
+#    - appserver: cd $LANDO_WEBROOT && drush cr
