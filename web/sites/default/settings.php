@@ -44,7 +44,7 @@ if (defined('PANTHEON_ENVIRONMENT')) {
   // If necessary, force redirect in to https
   if (isset($variables)) {
     if (array_key_exists('https', $variables) && $variables['https']) {
-      if (!$cli && $_SERVER['HTTPS'] === 'OFF') {
+      if ((!isset($cli) || !$cli) && $_SERVER['HTTPS'] === 'OFF') {
         if (!isset($_SERVER['HTTP_X_SSL']) || (isset($_SERVER['HTTP_X_SSL']) && $_SERVER['HTTP_X_SSL'] != 'ON')) {
           header('HTTP/1.0 301 Moved Permanently');
           header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
