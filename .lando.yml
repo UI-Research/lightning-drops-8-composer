@@ -7,6 +7,7 @@ config:
 
 services:
   appserver:
+#    xdebug: true
     config:
       drush: global:8.1.17
     overrides:

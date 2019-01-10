@@ -24,6 +24,7 @@ content:
     type: file_default
     region: content
 hidden:
+  addtoany: true
   created: true
   field_media_in_library: true
   name: true

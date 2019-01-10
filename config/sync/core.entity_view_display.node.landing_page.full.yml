@@ -86,6 +86,7 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  addtoany: true
   body: true
   content_moderation_control: true
   panelizer: true

@@ -125,3 +125,6 @@ paragraphs: 1.5.0
 devel: 1.2.0
 linkit: 5.0.0-beta8
 ctools_views: 3.0.0
+color: 8.6.5
+environment_indicator: 3.5.0
+create_user_permission: 1.0.0
