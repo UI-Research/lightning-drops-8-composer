@@ -26,10 +26,21 @@ tooling:
   tika:
     service: appserver
     cmd: java -jar /srv/bin/tika-app-1.1.jar
+  quickstart:
+    service: appserver
+    cmd: bash bin/lando-quickstart.sh
+    description: Runs composer install and compiles Particle theme.
+  particle:
+    service: appserver
+    cmd: bash bin/particle.sh
+    description: Compiles Particle theme in Lando (for quickstart or non frontend work).
+  clean:
+    service: appserver
+    cmd: bash bin/clean.sh
+    description: Removes all artifacts installed by Composer or NPM (includes Particle artifacts).
   drupal:
     cmd:
       - "/app/vendor/bin/drupal"
-      # - "--root=/app/web"
 
 # Enable events after install.
 

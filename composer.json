@@ -31,6 +31,7 @@
         "drupal/config_installer": "^1.0",
         "drupal/config_split": "^1.4",
         "drupal/console": "^1",
+        "drupal/create_user_permission": "^1.0",
         "drupal/devel": "^1.2",
         "drupal/editor_advanced_link": "1.x-dev",
         "drupal/encrypt": "^3.0",
