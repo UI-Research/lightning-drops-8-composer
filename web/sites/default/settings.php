@@ -30,14 +30,14 @@ $config_directories = array(
 if (defined('PANTHEON_ENVIRONMENT')) {
   $variables = array(
     'https' => true,
-//    'domains' =>
-//      array (
-//        'canonical' => 'next50.urban.org',
-//        'synonyms' =>
-//          array (
-//            0 => 'live-next50.pantheonsite.io',
-//          ),
-//      ),
+    //    'domains' =>
+    //      array (
+    //        'canonical' => 'next50.urban.org',
+    //        'synonyms' =>
+    //          array (
+    //            0 => 'live-next50.pantheonsite.io',
+    //          ),
+    //      ),
     'redis' => FALSE,
   );
 
@@ -83,6 +83,14 @@ if (defined('PANTHEON_ENVIRONMENT')) {
   // Config Split dev modules enabled by default.
   $config['config_split.config_split.dev']['status'] = TRUE;
 
+  // Environment Indicator.
+  $config['environment_indicator.indicator']['bg_color'] = '#55b748';
+
+  //$config['environment_indicator.indicator']['bg_color'] = '#db2b27';
+
+  $config['environment_indicator.indicator']['fg_color'] = '#ffffff';
+  $config['environment_indicator.indicator']['name'] = 'Lando';
+
   if (PANTHEON_ENVIRONMENT != 'live') {
     // Place for settings for the non-live environment
     $conf['reroute_email_enable'] = 1;
@@ -104,6 +112,11 @@ if (defined('PANTHEON_ENVIRONMENT')) {
 
   if (PANTHEON_ENVIRONMENT == 'dev') {
     // Place for settings for the dev environment
+
+    // Environment Indicator.
+    $config['environment_indicator.indicator']['bg_color'] = '#db2b27';
+    $config['environment_indicator.indicator']['fg_color'] = '#ffffff';
+    $config['environment_indicator.indicator']['name'] = 'Dev';
   }
 
   if (PANTHEON_ENVIRONMENT == 'test') {
@@ -121,6 +134,13 @@ if (defined('PANTHEON_ENVIRONMENT')) {
 
     // Config Split disable dev modules.
     $config['config_split.config_split.dev']['status'] = FALSE;
+
+    // Environment Indicator.
+    $config['environment_indicator.indicator']['bg_color'] = '#fdbf11';
+    $config['environment_indicator.indicator']['fg_color'] = '#000000';
+    $config['environment_indicator.indicator']['name'] = 'Test';
+
+
   }
 
   if (PANTHEON_ENVIRONMENT == 'live') {
@@ -140,6 +160,11 @@ if (defined('PANTHEON_ENVIRONMENT')) {
 
     // Config Split disable dev modules.
     $config['config_split.config_split.dev']['status'] = FALSE;
+
+    // Environment Indicator.
+    $config['environment_indicator.indicator']['bg_color'] = '#1696d2';
+    $config['environment_indicator.indicator']['fg_color'] = '#ffffff';
+    $config['environment_indicator.indicator']['name'] = 'Live';
 
     // Redirect to canonical domain
     if (isset($variables)) {
