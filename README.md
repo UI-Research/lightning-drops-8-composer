@@ -37,13 +37,13 @@ export CIRCLE_TOKEN=[REDACTED]
 Once you have all of the prerequisites in place, you can create your copy of this repo with one command:
 
 ```
-terminus build:project:create ui-Research/lightning-drops-8-composer:dev-master my-new-site --org="UI-Research"
+terminus build:project:create ui-research/lightning-drops-8-composer:dev-master my-new-site --org="UI-Research"
 ```
 
 if this is part of the Urban "Team" there is an extra flag like so:
 
 ```
-terminus build:project:create ui-Research/lightning-drops-8-composer:dev-master my-new-site --org="UI-Research" --team="The Urban Institute"
+terminus build:project:create ui-research/lightning-drops-8-composer:dev-master my-new-site --org="UI-Research" --team="The Urban Institute"
 ```
 
 The parameters shown here are:
