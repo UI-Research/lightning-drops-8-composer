@@ -85,9 +85,6 @@ if (defined('PANTHEON_ENVIRONMENT')) {
 
   // Environment Indicator.
   $config['environment_indicator.indicator']['bg_color'] = '#55b748';
-
-  //$config['environment_indicator.indicator']['bg_color'] = '#db2b27';
-
   $config['environment_indicator.indicator']['fg_color'] = '#ffffff';
   $config['environment_indicator.indicator']['name'] = 'Lando';
 
