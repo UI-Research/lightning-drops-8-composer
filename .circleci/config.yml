@@ -1,7 +1,7 @@
 # https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
 defaults: &defaults
   docker:
-    - image: quay.io/pantheon-public/build-tools-ci:4.x
+    - image: quay.io/pantheon-public/build-tools-ci:5.x
   working_directory: ~/example_drops_8_composer
   environment:
     #=========================================================================
@@ -19,7 +19,7 @@ defaults: &defaults
     # ADMIN_PASSWORD: The admin password to use when installing.
     # ADMIN_EMAIL:    The email address to give the admin when installing.
     #=========================================================================
-    TZ: "/usr/share/zoneinfo/America/New_York"
+    TZ: "/usr/share/zoneinfo/America/Los_Angeles"
 
     # The variables below usually do not need to be modified.
 
@@ -42,14 +42,14 @@ jobs:
     <<: *defaults
 
     docker:
-      - image: quay.io/pantheon-public/build-tools-ci:4.x
+      - image: quay.io/pantheon-public/build-tools-ci:5.x
 
     steps:
       - checkout
 
       - run:
           # Set TERMINUS_ENV and related environment variables.
-          # https://github.com/pantheon-systems/docker-build-tools-ci/blob/4.x/scripts/set-environment
+          # https://github.com/pantheon-systems/docker-build-tools-ci/blob/5.x/scripts/set-environment
           name: setup-environment-vars
           command: /build-tools-ci/scripts/set-environment
 
@@ -149,6 +149,21 @@ jobs:
           name: remove transient test fixtures
           command: ./.ci/scripts/09-cleanup-fixtures
 
+  composer_lock_updater:
+    <<: *defaults
+    docker:
+      - image: quay.io/pantheon-public/build-tools-ci:5.x
+    steps:
+      - checkout
+
+      - run:
+          name: setup-environment-vars
+          command: /build-tools-ci/scripts/set-environment
+
+      - run:
+          name: run composer lock updater
+          command: set -e && clu https://${GITHUB_TOKEN}:x-oauth-basic@github.com/${CI_PROJECT_USERNAME}/${CI_PROJECT_REPONAME}.git | sed -e "s/${GITHUB_TOKEN}/[REDACTED]/g"
+
   visual_regression_test:
     <<: *defaults
     docker:
@@ -187,3 +202,13 @@ workflows:
           requires:
             - configure_env_vars
             - functional
+  scheduled_update_check:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - composer_lock_updater
